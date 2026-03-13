@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ── WARM DARK THEME ── */
+  --bg:        #0d0a0f;
+  --bg2:       #120d16;
+  --surface:   #1a1020;
+  --surface2:  #201528;
+
+  /* ── ACCENT COLORS ── */
+  --pink:      #ff2d78;
+  --pink-soft: #ff6fa8;
+  --yellow:    #ffd60a;
+  --orange:    #ff7d1a;
+  --purple:    #c026d3;
+
+  /* ── GRADIENTS ── */
+  --grad-1: linear-gradient(135deg, #ff2d78, #ffd60a);
+  --grad-2: linear-gradient(135deg, #c026d3, #ff2d78);
+  --grad-3: linear-gradient(135deg, #ff7d1a, #ffd60a);
+
+  /* ── TEXT ── */
+  --text-primary:   #fff0f6;
+  --text-secondary: #b89aaa;
+  --muted:          #6b4d60;
+
+  /* ── GLASS ── */
+  --glass-bg:     rgba(26, 16, 32, 0.65);
+  --glass-border: rgba(255, 45, 120, 0.12);
+
+  /* ── FONTS ── */
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-sans:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+/* ── SMOOTH SCROLL ── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* ── BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: none; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--yellow); }
+
+/* ── SELECTION ── */
+::selection { background: var(--pink); color: #fff; }
+
+/* ── GLASS ── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+}
+
+/* ── GRADIENT TEXT ── */
+.grad-text {
+  background: var(--grad-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.grad-text-2 {
+  background: var(--grad-2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── GRAIN ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.25;
+}
+
+/* ── SECTION DIVIDER ── */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 1rem;
+}
+.section-tag::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--pink);
+}
+
+/* ── RESPONSIVE HELPERS ── */
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
